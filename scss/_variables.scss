@@ -1,0 +1,24 @@
+// Colors
+$blue:#313A3D;
+$orange:#FD9638;
+$dark-orange:darken($orange, 20%);
+$grey:#B6B6B6;
+$light-grey:lighten($grey, 15%);
+
+// Background
+$background:#efefef;
+
+// Text
+$headline-color:$blue;
+$body-copy-color:$grey;
+
+// Links
+$link-color:#777D80;
+$link-hover-color:$orange;
+
+// Form
+$field-color:#E8E9EA;
+
+// Highlight Colors
+$highlight-color:white;
+$highlight-bkgd-color:$orange;

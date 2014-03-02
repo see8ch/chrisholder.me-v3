@@ -1,0 +1,186 @@
+// Breakpoints
+@mixin bp($point) {
+  @if $point == xlarge {
+    @media (max-width: 1600px) { @content; }
+  }
+  @else if $point == large {
+    @media (max-width: 1250px) { @content; }
+  }
+  @else if $point == medium {
+    @media (max-width: 600px)  { @content; }
+  }
+  @else if $point == small {
+    @media (max-width: 480px)  { @content; }
+  }
+  @else if $point == xsmall {
+    @media (max-width: 320px)  { @content; }
+  }
+}
+
+
+
+// Grid
+@mixin grid($column) {
+	width:(100% / 12) * $column;
+	margin:0 auto;
+
+	@include bp(xlarge) {}
+	@include bp(large) {}
+	@include bp(medium) {}
+	@include bp(small) {}
+	@include bp(xsmall) {}
+}
+
+
+// Top Border on Sections
+@mixin section-border($color) {
+	border-top:15px solid $color;
+}
+
+
+
+// Transition Ease
+@mixin ease($time:333ms, $attr:all) {
+	-webkit-transition: $attr $time ease-in-out;
+	-moz-transition: $attr $time ease-in-out;
+	-o-transition: $attr $time ease-in-out;
+	-ms-transition: $attr $time ease-in-out;
+	transition: $attr $time ease-in-out;
+}
+
+
+// Keyframes
+@mixin keyframes($name) {
+	@if  $name == experiment-rotate {
+		$start-scale:1;
+		$end-scale:1.1;
+
+		$start-skew:0deg;
+		$end-skew:5deg;
+
+		$start-opacity:0.2;
+		$end-opacity:0.5;
+
+		$start-rotate:0deg;
+		$mid-rotate:360deg;
+		$end-rotate:720deg;
+
+		@-webkit-keyframes $name {
+			0% {
+				-webkit-transform: rotate($start-rotate) skew($start-skew) scale($start-scale);
+				opacity:$start-opacity;
+			}
+		   50% {
+		   	-webkit-transform: rotate($mid-rotate) skew($end-skew) scale($end-scale);
+		   	opacity:$end-opacity;
+		   }
+		   100% {
+		   	-webkit-transform: rotate($end-rotate) skew($start-skew) scale($start-scale);
+		   	opacity:$start-opacity;
+		   }
+		}
+		@-moz-keyframes $name {
+			0% {
+				-moz-transform: rotate($start-rotate) skew($start-skew) scale($start-scale);
+				opacity:$start-opacity;
+			}
+		   50% {
+		   	-moz-transform: rotate($mid-rotate) skew($end-skew) scale($end-scale);
+		   	opacity:$end-opacity;
+		   }
+		   100% {
+		   	-moz-transform: rotate($end-rotate) skew($start-skew) scale($start-scale);
+		   	opacity:$start-opacity;
+		   }
+		}
+		@-ms-keyframes $name {
+			0% {
+				-ms-transform: rotate($start-rotate)skew($start-skew) scale($start-scale);
+				opacity:$start-opacity;
+			}
+		   50% {
+		   	-ms-transform: rotate($mid-rotate) skew($end-skew) scale($end-scale);
+		   	opacity:$end-opacity;
+		   }
+		   100% {
+		   	-ms-transform: rotate($end-rotate) skew($start-skew) scale($start-scale);
+		   	opacity:$start-opacity;
+		   }
+		}
+		@-o-keyframes $name {
+			0% {
+				-o-transform: rotate($start-rotate) skew($start-skew) scale($start-scale);
+				opacity:$start-opacity;
+			}
+		   50% {
+		   	-o-transform: rotate($mid-rotate) skew($end-skew) scale($end-scale);
+		   	opacity:$end-opacity;
+		   }
+		   100% {
+		   	-o-transform: rotate($end-rotate) skew($start-skew) scale($start-scale);
+		   	opacity:$start-opacity;
+		   }
+		}
+		@keyframes $name {
+			0% {
+				transform: rotate($start-rotate) skew($start-skew) scale($start-scale);
+				opacity:$start-opacity;
+			}
+		   50% {
+		   	transform: rotate($mid-rotate) skew($end-skew) scale($end-scale);
+		   	opacity:$end-opacity;
+		   }
+		   100% {
+		   	transform: rotate($end-rotate) skew($start-skew) scale($start-scale);
+		   	opacity:$start-opacity;
+		   }
+		}
+	}
+	@else if $name == experiment-counter-rotate {
+		$start-scale:1;
+		$end-scale:0.8;
+
+		$start-skew:0deg;
+		$end-skew:2deg, 4deg;
+
+		$start-rotate:0deg;
+		$mid-rotate:-360deg;
+		$end-rotate:-720deg;
+
+		@-webkit-keyframes $name {
+			0% {-webkit-transform: rotate($start-rotate) skew($start-skew) scale($start-scale);}
+		   50% {-webkit-transform: rotate($mid-rotate) skew($end-skew) scale($end-scale);}
+		   100% {-webkit-transform: rotate($end-rotate) skew($start-skew) scale($start-scale);}
+		}
+		@-moz-keyframes $name {
+			0% {-moz-transform: rotate($start-rotate) skew($start-skew) scale($start-scale);}
+		   50% {-moz-transform: rotate($mid-rotate) skew($end-skew) scale($end-scale);}
+		   100% {-moz-transform: rotate($end-rotate) skew($start-skew) scale($start-scale);}
+		}
+		@-ms-keyframes $name {
+			0% {-ms-transform: rotate($start-rotate)skew($start-skew) scale($start-scale);}
+		   50% {-ms-transform: rotate($mid-rotate) skew($end-skew) scale($end-scale);}
+		   100% {-ms-transform: rotate($end-rotate) skew($start-skew) scale($start-scale);}
+		}
+		@-o-keyframes $name {
+			0% {-o-transform: rotate($start-rotate) skew($start-skew) scale($start-scale);}
+		   50% {-o-transform: rotate($mid-rotate) skew($end-skew) scale($end-scale);}
+		   100% {-o-transform: rotate($end-rotate) skew($start-skew) scale($start-scale);}
+		}
+		@keyframes $name {
+			0% {transform: rotate($start-rotate) skew($start-skew) scale($start-scale);}
+		   50% {transform: rotate($mid-rotate) skew($end-skew) scale($end-scale);}
+		   100% {transform: rotate($end-rotate) skew($start-skew) scale($start-scale);}
+		}
+	}
+}
+
+
+// Animation
+@mixin animation($name, $speed:1s, $duration:infinite) {
+	  -webkit-animation: $name $speed $duration linear;
+    -moz-animation: $name $speed $duration linear;
+    -ms-animation: $name $speed $duration linear;
+    -o-animation: $name $speed $duration linear;
+    animation: $name $speed $duration linear;
+}

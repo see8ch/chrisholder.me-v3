@@ -1,0 +1,17 @@
+//-- Lato --//
+@mixin lato-1 {font-family: 'Lato', sans-serif; font-weight:100;}
+@mixin lato-1-i {@include lato-1; font-style:italic;}
+
+@mixin lato-3 {font-family: 'Lato', sans-serif; font-weight:300;}
+@mixin lato-3-i {@include lato-3; font-style:italic;}
+
+@mixin lato-4 {font-family: 'Lato', sans-serif; font-weight:400;}
+@mixin lato-4-i {@include lato-4; font-style:italic;}
+
+@mixin lato-7 {font-family: 'Lato', sans-serif; font-weight:700;}
+@mixin lato-7-i {@include lato-7; font-style:italic;}
+
+@mixin lato-9 {font-family: 'Lato', sans-serif; font-weight:900;}
+@mixin lato-9-i {@include lato-9; font-style:italic;}
+
+

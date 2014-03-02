@@ -1,0 +1,548 @@
+
+// Links & Headers
+a {
+	color:$link-color;
+	text-decoration:none;
+	text-transform:uppercase;
+	@include lato-4;
+	@include ease(333ms);
+
+	&:focus, &:hover, &:active {outline: 0;}
+	&:hover {color:$link-hover-color;}
+}
+
+h1, h2, h3, h4, h5 {
+	margin-bottom:0.35em;
+	color:$headline-color;
+	letter-spacing:0.1em;
+	text-transform:uppercase;
+	@include lato-3;
+}
+
+h1 {font-size:4.5em;}
+h2 {font-size:3.25em;}
+h3 {font-size:2.75em;}
+h4 {font-size:1.75em;}
+h5 {font-size:1em;}
+
+
+// Main Page Style
+body {
+	background:$background;
+	font-size:62.5%;
+	@include lato-3;
+	color:$body-copy-color;
+}
+
+
+// Wrappers
+.content-wrapper, .wrapper {
+	width:85%;
+	margin:0 auto;
+	max-width:1100px;
+
+	@include bp(xlarge) {}
+	@include bp(large) {}
+	@include bp(medium) {}
+	@include bp(small) {}
+	@include bp(xsmall) {}
+}
+
+.content-wrapper {}
+
+.wrapper {
+	position:relative;
+}
+
+
+
+// Header & Nav
+header {
+	background:$blue;
+	border-bottom:10px solid $orange;
+	padding:28px 0;
+	box-shadow:0 2px 8px 0 darken($background, 25%);
+
+	.wrapper {
+		img {
+			width:100px;
+		}
+
+		nav {
+			$nav-padding:20px;
+			position: absolute;
+			right: -$nav-padding;
+			top: 20px;
+
+			a {
+				@include lato-4;
+				font-size: 1.4em;
+				letter-spacing: 0.1em;
+				margin-left:8px;
+				padding:10px $nav-padding;
+				background:$blue;
+				@include ease(333ms);
+
+				&:hover {
+					background:#4B5D64;
+					color:white;
+				}
+
+				&.active {
+					color:$orange;
+				}
+			}
+		}
+	}
+}
+
+// Sections
+section {
+	text-align:center;
+	padding:90px 0 110px;
+
+	.icon {
+		margin-bottom:30px;
+	}
+
+	h3 {
+		margin-bottom: 15px;
+	}
+
+	.blurb {
+		@include grid(7);
+		font-size: 1.75em;
+		line-height: 1.4em;
+		text-align: left;
+		margin-bottom:60px;
+	}
+
+	.button {
+		position:relative;
+		overflow: hidden;
+		color:white;
+		padding: 13px 50px;
+		font-size: 1.4em;
+		letter-spacing: 0.1em;
+		@include lato-3;
+		@include ease;
+
+		span {
+			position:absolute;
+			width:100%;
+			text-align: center;
+			left:0;
+			top:-20px;
+			opacity: 0;
+			@include ease;
+
+			img {
+				height:0%;
+			}
+		}
+
+		&#work & {
+			background:$orange;
+
+			span {
+				padding-top:12px;
+
+				img {
+					width:12%;
+				}
+			}
+			&:hover {
+				background:$light-grey;
+				color:$light-grey;
+			}
+		}
+		&:hover {
+			span {
+				opacity:0.6;
+				top:0;
+			}
+		}
+	}
+}
+
+
+// Section Specific
+
+// Intro Section
+#intro {
+	background:white;
+	padding-bottom:40px;
+	margin-top:40px;
+	margin-bottom:60px;
+	@include section-border($blue);
+
+	.icon {
+		@include grid(2);
+		opacity:0.2;
+		margin-bottom:40px;
+		margin-top:25px;
+	}
+
+	.blurb {
+		margin-bottom:115px;
+	}
+
+	.location {
+		img {
+			display:block;
+			margin:0 auto 10px;
+		}
+
+		a {
+			background:white;
+			padding:5px 10px;
+			@include lato-7;
+			font-size: 0.8em;
+			letter-spacing: 0.1em;
+			color:$blue;
+			opacity: 0.5;
+
+			@include ease(333ms);
+
+			&:hover {
+				opacity: 1;
+				background:lighten($blue, 70%);
+			}
+		}
+	}
+}
+
+// Work Section
+#work {
+	background:$blue;
+	padding-bottom:115px;
+
+	.icon {
+		@include grid(6);
+		margin-bottom:40px;
+	}
+
+	h3 {
+		color:white;
+	}
+
+	.button {
+//		background:$orange;
+
+		span {
+//			padding-top:12px;
+
+			img {
+//				width:12%;
+			}
+		}
+		&:hover {
+//			background:$light-grey;
+//			color:$light-grey;
+		}
+	}
+}
+
+// Experiments Section
+@include keyframes(experiment-rotate);
+@include keyframes(experiment-counter-rotate);
+
+#experiments {
+	background:$orange;
+	padding-top:90px;
+
+	.icon-wrap {
+		@include grid(2.5);
+		position:relative;
+		height:215px;
+		margin-bottom: 50px;
+
+		.icon {
+			width:100%;
+			position:absolute;
+			top:0;
+			left:0;
+			float:left;
+			@include ease(333ms);
+
+			&:first-child {
+				z-index: 10;
+				@include animation(experiment-counter-rotate, 180s);
+			}
+
+			&:nth-child(2) {
+				z-index: 1;
+				@include animation(experiment-rotate, 40s);
+			}
+		}
+	}
+
+	.blurb {
+		color:white;
+	}
+
+	.button {
+		background:$blue;
+
+		span {
+			padding-top:11px;
+		}
+
+		&:hover {
+			background:$light-grey;
+			color:$light-grey;
+		}
+	}
+}
+
+// Skills Section
+#skills {
+	background:$blue;
+	padding-top:100px;
+	padding-bottom:115px;
+
+	img {
+		@include grid(8);
+		display: block;
+		margin-bottom: 75px;
+	}
+
+	.button {
+		background:$orange;
+
+		span {
+			padding-top:9px;
+			img {
+				width:8%;
+				margin-bottom: 0;
+			}
+		}
+		&:hover {
+			background:$light-grey;
+			color:$light-grey;
+		}
+	}
+}
+
+// Hire Section
+#hire {
+	background:white;
+	margin-top:60px;
+	margin-bottom:120px;
+	@include section-border($blue);
+
+	.icon {
+		@include grid(2.6);
+		opacity: 0.2;
+		margin-bottom:35px;
+	}
+
+	.blurb {margin-bottom:40px;}
+
+	form {
+		@include grid(7);
+
+		.field {
+			width:100%;
+			position:relative;
+			margin-bottom:15px;
+
+			$hover-label-width:18%;
+			$placeholder-bumper:1.5%;
+			$label-padding:18px;
+
+			// Label
+			label {
+				text-transform: uppercase;
+				position:absolute;
+				top:0;
+				left:0;
+				background:$blue;
+				width:100%;
+				padding:($label-padding + 1px) 0;
+				font-size: 1.45em;
+				letter-spacing: 0.075em;
+
+				@include ease(333ms);
+
+				// Checkmark
+				+ span {
+					font-family: 'SSStandard';
+					opacity: 0;
+					color:white;
+					display: block;
+					position:absolute;
+					top: 17px;
+					left: 7%;
+					font-size: 2.5em;
+					text-shadow:1px 2px 0 $dark-orange;
+
+					@include ease(333ms);
+				}
+			}
+
+			// Fields
+			input[type="text"],
+			textarea {
+				border:none;
+				background:$field-color;
+				width:100% - $hover-label-width - $placeholder-bumper;
+				margin:0;
+				padding:$label-padding 0;
+				padding-left:$hover-label-width + $placeholder-bumper;
+				color:$blue;
+				font-size: 1.4em;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+
+				&#msg {
+					height: 18px;
+					resize: none;
+					@include ease(333ms);
+				}
+
+				// Focus and JS Toggle Class
+				&:focus,
+				&.focused {
+					outline:none;
+
+					&#msg {
+						padding-bottom:150px;
+					}
+
+					+ label {
+						width:$hover-label-width;
+						background:$orange;
+						color:$blue;
+					}
+				}
+
+				// JS Toggle Class
+				&.focused {
+					+ label {
+						color: $orange;
+					}
+				}
+			}
+
+			// Field Hover
+			&:hover {
+				label {
+					width:$hover-label-width;
+					background:$blue;
+					color:white;
+				}
+			}
+		}
+
+		// Submit Button
+		input[type="submit"] {
+			background:$orange;
+			color:white;
+			-webkit-appearance: none;
+			border: none;
+			text-transform: uppercase;
+			@include ease(333ms);
+
+			&:hover {
+				background:$blue;
+				color:$orange;
+			}
+
+			&:focus {
+				outline:none;
+				background:$dark-orange;
+			}
+		}
+	}
+}
+
+
+
+
+
+// Footer
+footer {
+	background:$blue;
+	padding:11px 0;
+
+	.wrapper {
+		text-align:center;
+
+		a {
+			font-size: 0.8em;
+			letter-spacing: 0.15em;
+
+			&:first-child {
+				position:absolute;
+				left:0;
+			}
+
+			&:last-child {
+				position:absolute;
+				right:0;
+			}
+		}
+	}
+
+	&:hover {
+		.wrapper {
+			a {
+				&:first-child,
+				&:last-child {
+					color:$orange;
+				}
+
+				&:nth-child(2) {
+					color:white;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+/* Extras
+======================================================= */
+
+// Scroll to Top
+.go-top {
+	display: none;
+	position: fixed;
+	bottom: 2em;
+	right: 2em;
+	padding: 1em 1em 0.8em 1em;
+	background-color: $blue;
+
+	font-size: 12px;
+	color: white;
+	text-decoration: none;
+	opacity:0.4;
+
+	&:hover {
+		opacity:1;
+		color:$orange;
+	}
+}
+
+
+// FIrst & Last Overrides
+.first {margin-left:0 !important;}
+.last {margin-right:0 !important;}
+
+
+
+
+
+// Selection Colors
+::selection {
+	background:$highlight-bkgd-color;
+	color:$highlight-color;
+}
+
+::-moz-selection {
+	background:$highlight-bkgd-color;
+	color:$highlight-color;
+}
